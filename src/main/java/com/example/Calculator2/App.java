@@ -1,4 +1,5 @@
 package com.example.Calculator2;
+
 import java.util.Scanner;
 
 public class App {
@@ -41,8 +42,8 @@ public class App {
             String remove = sc.next();
             if (remove.equals("yes")) {
                 calculator2.removeResult();
+                System.out.println("삭제 후 저장된 값: " + calculator2.getResults());
             }
-            System.out.println("삭제 후 저장된 값: " + calculator2.getResults());
 
             System.out.println("종료하시겠습니까? exit 입력 시 종료");
             String exit = sc.next();

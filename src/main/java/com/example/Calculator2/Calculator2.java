@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Calculator2 {
     //필드 정의
-    private ArrayList<Integer> results = new ArrayList<>();
+    private final ArrayList<Integer> results = new ArrayList<>();
 
     //Getter 메소드
     public ArrayList<Integer> getResults() {
