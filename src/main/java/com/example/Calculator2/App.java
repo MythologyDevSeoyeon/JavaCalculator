@@ -1,19 +1,21 @@
 package com.example.Calculator2;
-
 import java.util.Scanner;
+
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (true) {
-            //객체 생성
-            Calculator2 calculator = new Calculator2();
 
+        // 객체 생성
+        Calculator2 calculator2 = new Calculator2();
+
+        while (true) {
             System.out.println("첫번째 숫자를 입력하세요");
-            double num1 = sc.nextDouble();
+            int num1 = sc.nextInt();
 
             System.out.println("두번째 숫자를 입력하세요");
-            double num2 = sc.nextDouble();
+            int num2 = sc.nextInt();
 
             System.out.println("연산 기호를 입력하세요");
             String operator = sc.next();
@@ -28,16 +30,29 @@ public class App {
                 num2 = sc.nextInt();
             }
 
-            double result = calculator.calculate(num1, num2, operator);
-            calculator.saveResult(result);
-
+            int result = calculator2.calculate(num1, num2, operator);
             System.out.println("결과: " + num1 + " " + operator + " " + num2 + " = " + result);
+
+            calculator2.saveResult(result);
+
+            // Getter 메소드를 활용한 저장된 값 읽기
+//            ArrayList<Integer> results = calculator2.getResults();
+            System.out.println("저장된 값: " + calculator2.getResults());
+
+            // 저장된 값 삭제하기
+            System.out.println("첫번째 값을 삭제 하겠습니까? yes 입력 시 삭제");
+            String remove = sc.next();
+            if (remove.equals("yes")) {
+                calculator2.removeResult();
+            }
+            System.out.println("삭제 후 저장된 값: " + calculator2.getResults());
 
             System.out.println("종료하시겠습니까? exit 입력 시 종료");
             String exit = sc.next();
             if (exit.equals("exit")) {
                 System.exit(0);
             }
+
         }
     }
 }
