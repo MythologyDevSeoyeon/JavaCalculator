@@ -1,8 +1,6 @@
 package com.example.Calculator2;
 import java.util.Scanner;
 
-import java.util.ArrayList;
-
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -36,7 +34,6 @@ public class App {
             calculator2.saveResult(result);
 
             // Getter 메소드를 활용한 저장된 값 읽기
-//            ArrayList<Integer> results = calculator2.getResults();
             System.out.println("저장된 값: " + calculator2.getResults());
 
             // 저장된 값 삭제하기
