@@ -1,5 +1,6 @@
 package com.example.Calculator2;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -9,12 +10,33 @@ public class App {
         // 객체 생성
         Calculator2 calculator2 = new Calculator2();
 
-        while (true) {
-            System.out.println("첫번째 숫자를 입력하세요");
-            int num1 = sc.nextInt();
 
-            System.out.println("두번째 숫자를 입력하세요");
-            int num2 = sc.nextInt();
+
+        while (true) {
+            int num1 = 0;
+            int num2 = 0;
+
+            while(true){
+                try{
+                    System.out.println("첫 번째 값을 입력하세요");
+                    num1 = sc.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("유효하지 않은 입력입니다. \n다시 입력해주세요");
+                    sc.next();
+                }
+            }
+
+            while(true){
+                try{
+                    System.out.println("두 번째 값을 입력하세요");
+                    num2 = sc.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("유효하지 않은 입력입니다. \n다시 입력해주세요");
+                    sc.next();
+                }
+            }
 
             System.out.println("연산 기호를 입력하세요");
             String operator = sc.next();
