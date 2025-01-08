@@ -39,38 +39,36 @@ public class App {
             if (exit.equals("exit")) {
                 System.exit(0);
             }
-
         }
-
     }
 
+
     private static int getInput(String prompt, Scanner sc) {
-        int num;
         while (true) {
             try {
                 System.out.println(prompt);
-                num = sc.nextInt();
-                break;
+                return sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("유효하지 않은 입력입니다. \n다시 입력해 주세요.");
                 sc.next();
             }
         }
-        return num;
     }
 
     private static String getOperator(Scanner sc) {
-        String operator;
         while (true) {
             System.out.println("연산자를 입력하세요");
-            operator = sc.next();
-            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
-                break;
+            String operator = sc.next();
+            if (checkOperator(operator)) {
+                return operator;
             } else {
                 System.out.println("잘못된 연산 기호를 입력했습니다.\n다시 입력하세요");
             }
         }
-        return operator;
+    }
+
+    private static boolean checkOperator(String operator){
+        return operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/");
     }
 
 }
