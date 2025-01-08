@@ -6,49 +6,16 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        // 객체 생성
         Calculator2 calculator2 = new Calculator2();
 
-
-
         while (true) {
-            int num1 = 0;
-            int num2 = 0;
-
-            while(true){
-                try{
-                    System.out.println("첫 번째 값을 입력하세요");
-                    num1 = sc.nextInt();
-                    break;
-                } catch (InputMismatchException e) {
-                    System.out.println("유효하지 않은 입력입니다. \n다시 입력해주세요");
-                    sc.next();
-                }
-            }
-
-            while(true){
-                try{
-                    System.out.println("두 번째 값을 입력하세요");
-                    num2 = sc.nextInt();
-                    break;
-                } catch (InputMismatchException e) {
-                    System.out.println("유효하지 않은 입력입니다. \n다시 입력해주세요");
-                    sc.next();
-                }
-            }
-
-            System.out.println("연산 기호를 입력하세요");
-            String operator = sc.next();
-
-            while (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")) {
-                System.out.println("잘못된 연산 기호를 입력했습니다.\n다시 입력하세요");
-                operator = sc.next();
-            }
+            int num1 = getInput("첫 번째 값을 입력하세요", sc);
+            int num2 = getInput("두 번째 값을 입력하세요", sc);
+            String operator = getOperator("연산자를 입력하세요", sc);
 
             while (operator.equals("/") && num2 == 0) {
-                System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.\n두번째 숫자를 다시 입력해주세요 : ");
-                num2 = sc.nextInt();
+                System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다. ");
+                num2 = getInput("두 번째 값을 다시 입력하세요", sc);
             }
 
             int result = calculator2.calculate(num1, num2, operator);
@@ -74,5 +41,36 @@ public class App {
             }
 
         }
+
     }
+
+    private static int getInput(String prompt, Scanner sc) {
+        int num = 0;
+        while (true) {
+            try {
+                System.out.println(prompt);
+                num = sc.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("유효하지 않은 입력입니다. \n다시 입력해 주세요.");
+                sc.next();
+            }
+        }
+        return num;
+    }
+
+    private static String getOperator(String prompt, Scanner sc) {
+        String operator;
+        while (true) {
+            System.out.println(prompt);
+            operator = sc.next();
+            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
+                break;
+            } else {
+                System.out.println("잘못된 연산 기호를 입력했습니다.\n다시 입력하세요");
+            }
+        }
+        return operator;
+    }
+
 }
