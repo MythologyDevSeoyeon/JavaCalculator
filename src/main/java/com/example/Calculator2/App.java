@@ -11,7 +11,7 @@ public class App {
         while (true) {
             int num1 = getInput("첫 번째 값을 입력하세요", sc);
             int num2 = getInput("두 번째 값을 입력하세요", sc);
-            String operator = getOperator("연산자를 입력하세요", sc);
+            String operator = getOperator(sc);
 
             while (operator.equals("/") && num2 == 0) {
                 System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다. ");
@@ -45,7 +45,7 @@ public class App {
     }
 
     private static int getInput(String prompt, Scanner sc) {
-        int num = 0;
+        int num;
         while (true) {
             try {
                 System.out.println(prompt);
@@ -59,10 +59,10 @@ public class App {
         return num;
     }
 
-    private static String getOperator(String prompt, Scanner sc) {
+    private static String getOperator(Scanner sc) {
         String operator;
         while (true) {
-            System.out.println(prompt);
+            System.out.println("연산자를 입력하세요");
             operator = sc.next();
             if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
                 break;
